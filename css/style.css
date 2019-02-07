@@ -1,8 +1,8 @@
 
 
-* {
+/* * {
     border: 1px solid black;
-}
+} */
 body {
     padding: 0;
     margin: 0;
@@ -19,15 +19,24 @@ header {
 .row {
     display: flex;
     justify-content: space-around;
-    padding: 50px;
+    padding: 20px;
     align-items: center;
     height: 33.333%;
+    background-color: beige;
+
+}
+.row img {
+    padding: 0;
+    border-radius: 15%;
+    height: 200px;
 
 }
 .tools {
-    display: flex;
+    display: inline-block;
     height: 100%;
-    
+    background-color: beige;
+    text-align: center;
+
 }
 
 .main-screen {
@@ -36,14 +45,19 @@ header {
 
 }
 .wordUp {
-    height: 100px;
-    font-size: 50px;
+    font-size: 100px;
+    border: dashed maroon 1px;
+    width: 250px;
+    text-align: center;
+    padding: 0;
+    margin: auto;
+    align-content: center;
 }
 .timer {
     display: flex;
     height: 100px;
     padding: 0;
-    align-items: 
+    width: 50px;
 
 }
 p {
