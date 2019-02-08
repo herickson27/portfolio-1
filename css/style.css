@@ -1,8 +1,8 @@
 
 
-/* * {
+* {
     border: 1px solid black;
-} */
+} 
 body {
     padding: 0;
     margin: 0;
@@ -21,14 +21,16 @@ header {
     justify-content: space-around;
     padding: 20px;
     align-items: center;
-    height: 33.333%;
+    height: 100px;
     background-color: beige;
 
 }
 .row img {
     padding: 0;
-    border-radius: 15%;
-    height: 200px;
+    border-radius: 20%;
+    height: 100px;
+    width: 120px;
+    border: 1px solid goldenrod;
 
 }
 .tools {
@@ -46,12 +48,13 @@ header {
 }
 .wordUp {
     font-size: 100px;
-    border: dashed maroon 1px;
+    border: solid rgb(238, 234, 234) 1px;
     width: 250px;
     text-align: center;
     padding: 0;
-    margin: auto;
-    align-content: center;
+    margin: 0;
+    background-color: white;
+    box-shadow: 0 10px 6px -6px #777;
 }
 .timer {
     display: flex;
@@ -62,4 +65,11 @@ header {
 }
 p {
     font-size: 40px;
+}
+button {
+    padding: 10px;
+    margin: 10px;
+    background-color:greenyellow;
+    color: white;
+    
 }
