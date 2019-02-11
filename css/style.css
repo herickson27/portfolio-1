@@ -1,8 +1,8 @@
 
 
-* {
+/* * {
     border: 1px solid black;
-} 
+}  */
 body {
     padding: 0;
     margin: 0;
@@ -12,64 +12,78 @@ body {
 }
 header {
     display: flex;
-    background-color: lightblue;
+    background-color: rgb(109, 157, 173);
     font-size: 75px;
     justify-content: space-evenly;
+    padding: 20px;
+    
 }
 .row {
     display: flex;
     justify-content: space-around;
-    padding: 20px;
+    padding: 10px;
     align-items: center;
-    height: 100px;
-    background-color: beige;
-
+    height: 33.333%;
 }
-.row img {
-    padding: 0;
-    border-radius: 20%;
-    height: 100px;
+#buttonBoard {
+    background-image: url('https://www.southernseaventures.com/wp-content/uploads/Sweden_fishing-village-720x466.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.textBox {
+    padding: 10px;
+    height: 80px;
     width: 120px;
-    border: 1px solid goldenrod;
-
+    text-align: center; 
+    background-color: white;
+    box-shadow: 0 10px 10px -6px #777;
 }
 .tools {
     display: inline-block;
     height: 100%;
-    background-color: beige;
+    background-color: rgb(109, 157, 173);
+    opacity: 75%;
     text-align: center;
-
 }
 
 .main-screen {
     display: grid;
-    grid-template-columns: 35% 65%;
-
+    grid-template-columns: 27% 73%;
 }
 .wordUp {
+    display: inline-block;
     font-size: 100px;
     border: solid rgb(238, 234, 234) 1px;
     width: 250px;
     text-align: center;
     padding: 0;
-    margin: 0;
+    margin: 10px;
     background-color: white;
-    box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 10px -6px #777;
+    justify-content: center;
+    align-items: center;
 }
-.timer {
-    display: flex;
-    height: 100px;
-    padding: 0;
+#timer {
+    display: inline-block;
+    height: 80px;
+    padding: 30px;
     width: 50px;
-
+    font-size: 80px;
+    align-content: center;
 }
 p {
     font-size: 40px;
+    padding: 5px;
 }
 button {
     padding: 10px;
     margin: 10px;
     background-color:greenyellow;
     color: white;
-    
+    border: greenyellow;
+    border-radius: 15%;
+    box-shadow: 0 5px 2px -2px lightgray;   
+}
+#scoreBox {
+    font-size: 50px;
 }

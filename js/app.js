@@ -1,94 +1,99 @@
 //Variables
-var sweOne = ['båt', 'hatt', 'kompis','hus', 'katt', 'sjung','spring','bil','glad','ledsen','trött','läsa','bok','bord'];
-var engOne = ['boat','hat','friend','house','cat','sing','run','car','happy','sad','tired','read','book','table'];
-var engTwo = ['study','drawing','whisper','uncle','difficult','movie-theater','waterbottle','backpack','abroad','ice-cream','trip','computer','marker','homework'];
-var sweTwo = ['plugga','målning','','faster','svårt','bio','vattenflaska','ryggsak','utomlands','glass','resan','datorn','markerspenna','laxor'];
-var engThree = ['to work','to visit','to walk','to live','to shop','to dream','to swim','to build','to speak','to think','to eat','to ask','to travel','to run'];
-var sweThree = ['arbeta','hälsa','gå','bo','köpa','drömma','simma','bygga','tala','tänka','äta','fråga','resa','springa'];
+var sweOne = ['båt','hatt','hus','katt','sjung','spring','bil','glad','ledsen','trött','bok','bord'];
+var engOne = ['boat','hat','house','cat','sing','run','car','happy','sad','tired','book','table'];
+var engTwo = ['study','drawing','whisper','sandwich','friend','movie-theater','waterbottle','backpack','ice-cream','trip','computer','homework'];
+var sweTwo = ['plugga','målning','viska', 'smörgås','kompis','bio','vattenflaska','ryggsak','glass','resan','datorn','laxor'];
+var engThree = ['to work','to visit','to walk','to shop','to dream','to swim','to build','to speak','to ask','to travel','to run','to eat'];
+var sweThree = ['arbeta','hälsa','gå','köpa','drömma','simma','bygga','tala','fråga','resa','springa','äta'];
 
+var imageClick;
+var imageBox;
+var images;
 var time = 10;
-var hiScoreEl = null; 
-var scoreEl = null;
 var randNum;
 var yourHiScore;
-var newWordBtn;
 var wordBox;
 var startBtn;
 var scoreValue = 0;
 var highScoreValue = 0;
+var hiScoreEl = null; 
+var scoreEl = null;
 
 // This returns a random word from the engOne array
 function chooseAWord() {
     // var engOne = ['boat','hat','friend','house','cat','sing','run','car','happy','sad','tired','read','book','table'];
     randNum = Math.floor(Math.random() * engOne.length);
+    console.log(randNum);
     return engOne[randNum];
+
 }
+document.getElementById('0').textContent = "bat"
 
-// This renders the current word onto the page
-function renderWord(word) {
-    wordBox.textContent = word;
-}
+for (var i= 0; i < 12; i++) {
+    var boxNum = i;
+    console.log(i);
+    document.getElementById(i).textContent = sweOne[i];
+};
 
-
-//event listeners
-
-// This kicks the game off / resets the game
-function startClick() {
-    var theWord = chooseAWord();
-    console.log("theWord is:", theWord);
-    console.log("randNum is:", randNum);
-    renderWord( theWord );
-}
-// click image - click result will be correct or incorrect and proceed that way
-function imageClick(e) {
-    e.stopPropagation();
-    if ( parseInt(e.target.id) === randNum ) {
-        scoreValue++;
-        // var theWord = chooseAWord();
-        // renderWord(theWord);
-        startClick();
-        console.log("CORRECT!!!!!");
-    } else {
-        console.log("INCORRECT!!!");
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-    images = document.getElementsByClassName('imageBox');
-    yourHiScore = document.getElementById('yourhiScore');
-    timer = document.getElementById('timer');
-    startBtn = document.getElementById('startBtn');
-    wordBox = document.getElementById('currentWord');
-    startBtn.addEventListener('click', startClick);
-    scoreEl = document.getElementById('yourScore');
-    // imageBox = document.getElementsByClassName('imageBox');
     
+    // This renders the current word onto the page
+    function renderWord(word) {
+        wordBox.textContent = word;
+    }
+    //reset button: resets timer, randomize set of word options. 
+    
+    // This kicks the game off / resets the game
+    function startClick() {
+        var theWord = chooseAWord();
+        renderWord( theWord );
+        updateTimer(); 
+    }
+    // click image - click result will be correct or incorrect and proceed that way
+    function imageClick(e) {
+        e.stopPropagation();
+        if ( parseInt(e.target.id) === randNum ) {
+            // var theWord = chooseAWord();
+            // renderWord(theWord);
+            startClick();
+            console.log(imageClick);
+            scoreValue++;
+            scoreEl.textContent = scoreValue;
+            e.target.style.borderColor = "green"; //e.target is for the specific event click of the box not all 'images'
+        } else {
+            e.target.style.borderColor = "red";
+        }  
+    }
+    document.addEventListener("DOMContentLoaded", function(){
+        images = document.getElementsByClassName('textBox');
+        yourHiScore = document.getElementById('yourhiScore');
+        timer = document.getElementById('timer');
+        startBtn = document.getElementById('startBtn');
+        wordBox = document.getElementById('currentWord');
+        startBtn.addEventListener('click', startClick);
+        scoreEl = document.getElementById('score');
+        imageBox = document.getElementsByClassName('textBox');
+        document.getElementById('1')
+        console.log(document.getElementById('1'));
+        
     for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('click', imageClick);
     }
 });
 
-
-// }
-// function timer() {
-//     var countdown = time;
-//     $('.timer').text(countdown);
-//     count = setInterval(function() {
-//         countdown--;
-//         if (countdown >= 0) {
-//             $('.timer').text(countdown);
-//         }
-//         if (countdown == 0) {
-//             clearInterval(count);
-//             clearGame();
-//         }
-//     }, 1000);
-//  }
-//}
-
-//if (!localStorage.getItem('yourScore') && !localStorage.getItem('yourHiScore')){
-//    localStorage.setItem('yourScore', 0);
-//   localStorage.setItem('yourHiScore', 0);
+function updateTimer() {
+    var countdown = time;
+    timer.textContent=countdown;
+    count = setInterval(function() {
+        countdown--;
+        if (countdown >= 0) {
+            timer.textContent=countdown;
+        }
+        if (countdown == 0) {
+            clearInterval(count);
+            updateTimer();
+        }
+    }, 1000);
+}
 
 //init game: 
     //reveal one random card from eng1 arr 
