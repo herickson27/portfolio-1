@@ -11,32 +11,41 @@ This game was created to help beginners who would like to start learning a forei
 
 ----
 
-## Prerequisites
+## Prerequisites ##
 
 No additional prerewusities are needed for this game aside from the link to the online location. 
 
-Running the Tests
+----
 
-## Deployment
+## Deployment ##
 
 www. #####
 
-##future goals
+----- 
+
+## Future goals ##
 
 After launching, I would like to inplement additional levels to introduce more challenging expressions, verbs and more specific vocabulary. 
 
-### Contributing
+-----
+
+### Contributing ###
 wdi-23 classmates and instructors
 wdi-23 classnotes
 
-###Authors
+
+------
+
+### Authors ###
 
 Hannah Erickson
 herickson27 
 
-####License
+
+-----
+### License ###
 
 No licensing required
 
-####Acknowledgments
+#### Acknowledgments ####
 Shout outs to Steve, Mike, FX and other classmates that have answered many many questions for a simple game structure. 
