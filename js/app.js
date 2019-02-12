@@ -18,15 +18,16 @@ var scoreValue = 0;
 var highScoreValue = 0;
 var hiScoreEl = null; 
 var scoreEl = null;
+var level;
 
 // This returns a random word from the engOne array
 function chooseAWord() {
-    // var engOne = ['boat','hat','friend','house','cat','sing','run','car','happy','sad','tired','read','book','table'];
-    randNum = Math.floor(Math.random() * engOne.length);
-    console.log(randNum);
-    return engOne[randNum];
+        // var engOne = ['boat','hat','friend','house','cat','sing','run','car','happy','sad','tired','read','book','table'];
+        randNum = Math.floor(Math.random() * engOne.length);
+        console.log(randNum);
+        return engOne[randNum];
+    }
 
-}
 document.getElementById('0').textContent = "bat"
 
 for (var i= 0; i < 12; i++) {
@@ -60,11 +61,12 @@ for (var i= 0; i < 12; i++) {
         } else {
             e.target.style.borderColor = "rgb(173, 47, 47)";
         } 
-        
-        console.log(imageClick); 
-        
     }
-    // function unclick(
+
+        
+
+    // function unclick(e) {
+    
         
         document.addEventListener("DOMContentLoaded", function(){
         images = document.getElementsByClassName('textBox');
@@ -103,6 +105,7 @@ function updateTimer() {
         }
     }, 1000);
 }
+
 
 //init game: 
     //reveal one random card from eng1 arr 
