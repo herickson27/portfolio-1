@@ -9,7 +9,7 @@ var sweThree = ['arbeta','hälsa','gå','köpa','drömma','simma','bygga','tala'
 var imageClick;
 var imageBox;
 var images;
-var time = 10;
+var time = 15;
 var randNum;
 var yourHiScore;
 var wordBox;
@@ -34,13 +34,11 @@ for (var i= 0; i < 12; i++) {
     console.log(i);
     document.getElementById(i).textContent = sweOne[i];
 };
-
-    
     // This renders the current word onto the page
     function renderWord(word) {
         wordBox.textContent = word;
+
     }
-    //reset button: resets timer, randomize set of word options. 
     
     // This kicks the game off / resets the game
     function startClick() {
@@ -52,18 +50,23 @@ for (var i= 0; i < 12; i++) {
     function imageClick(e) {
         e.stopPropagation();
         if ( parseInt(e.target.id) === randNum ) {
-            // var theWord = chooseAWord();
-            // renderWord(theWord);
-            startClick();
+            var theWord = chooseAWord();
+            renderWord(theWord);
             console.log(imageClick);
             scoreValue++;
             scoreEl.textContent = scoreValue;
-            e.target.style.borderColor = "green"; //e.target is for the specific event click of the box not all 'images'
+            e.target.style.borderColor = "rgb(85, 165, 91)"; 
+            
         } else {
-            e.target.style.borderColor = "red";
-        }  
+            e.target.style.borderColor = "rgb(173, 47, 47)";
+        } 
+        
+        console.log(imageClick); 
+        
     }
-    document.addEventListener("DOMContentLoaded", function(){
+    // function unclick(
+        
+        document.addEventListener("DOMContentLoaded", function(){
         images = document.getElementsByClassName('textBox');
         yourHiScore = document.getElementById('yourhiScore');
         timer = document.getElementById('timer');
@@ -75,11 +78,17 @@ for (var i= 0; i < 12; i++) {
         document.getElementById('1')
         console.log(document.getElementById('1'));
         
-    for (let i = 0; i < images.length; i++) {
-        images[i].addEventListener('click', imageClick);
-    }
-});
+        for (let i = 0; i < images.length; i++) {
+            images[i].addEventListener('click', imageClick);
+            
+        }
+    });
+    //reset button: resets timer, randomize set of word options. 
+    function myFunction() {
+    location.reload();
+    chooseAWord ( theWord);
 
+}
 function updateTimer() {
     var countdown = time;
     timer.textContent=countdown;
@@ -89,8 +98,8 @@ function updateTimer() {
             timer.textContent=countdown;
         }
         if (countdown == 0) {
+            timer.textContent = "Times Up!"
             clearInterval(count);
-            updateTimer();
         }
     }, 1000);
 }

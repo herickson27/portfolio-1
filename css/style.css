@@ -10,13 +10,19 @@ body {
     width: 100vw;
     font-family: 'Amatic SC', cursive;
 }
-header {
+#h1 {
     display: flex;
-    background-color: rgb(109, 157, 173);
-    font-size: 75px;
+    background-color: rgb(199, 77, 77);
     justify-content: space-evenly;
-    padding: 20px;
+    color: black;
+    box-shadow: #777 0 10px 6px -6px; 
+    font-size: 80px;
+    margin: 0;
     
+}
+p {
+    font-size: 45px;
+    float: center;
 }
 .row {
     display: flex;
@@ -26,22 +32,30 @@ header {
     height: 33.333%;
 }
 #buttonBoard {
+    position: relative;
     background-image: url('https://www.southernseaventures.com/wp-content/uploads/Sweden_fishing-village-720x466.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    border: 50px solid rgb(199, 77, 77);
+    opacity: 50%;
+    box-shadow:  0 10px 6px -6px #777;
 }
-.textBox {
+.textBox  {
     padding: 10px;
-    height: 80px;
-    width: 120px;
+    height: 70px;
+    width: 100px;
     text-align: center; 
-    background-color: white;
+    background-color: whitesmoke;
     box-shadow: 0 10px 10px -6px #777;
+    border: 3px solid white;
+}
+.color:hover {
+    background: rgb(165, 50, 50) ;
 }
 .tools {
     display: inline-block;
     height: 100%;
-    background-color: rgb(109, 157, 173);
+    background-color: rgb(199, 77, 77);
     opacity: 75%;
     text-align: center;
 }
@@ -56,9 +70,9 @@ header {
     border: solid rgb(238, 234, 234) 1px;
     width: 250px;
     text-align: center;
-    padding: 0;
+    padding: 10px;
     margin: 10px;
-    background-color: white;
+    background-color: whitesmoke;
     box-shadow: 0 10px 10px -6px #777;
     justify-content: center;
     align-items: center;
@@ -66,24 +80,31 @@ header {
 #timer {
     display: inline-block;
     height: 80px;
-    padding: 30px;
-    width: 50px;
-    font-size: 80px;
+    width: 120px;
+    padding: 10px;
+    font-size: 50px;
     align-content: center;
+    text-align: center;
 }
-p {
-    font-size: 40px;
-    padding: 5px;
+.timerBox {
+    display: inline-block;
+    text-align: center;
+    margin: auto; 
+    padding: auto;
 }
+
 button {
     padding: 10px;
     margin: 10px;
-    background-color:greenyellow;
+    background-color:whitesmoke;
     color: white;
-    border: greenyellow;
+    border: white;
     border-radius: 15%;
+    color: black;
     box-shadow: 0 5px 2px -2px lightgray;   
 }
 #scoreBox {
-    font-size: 50px;
+    letter-spacing: 3px;
+    padding: 20px;
+    font-size: 75px;
 }
