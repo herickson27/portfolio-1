@@ -27,11 +27,6 @@ function chooseAWord() {
     randNum = Math.floor(Math.random() * engOne.length);
     console.log(randNum);
     return engOne[randNum];
-        for (let i = 0; i < imageBox.length; i++) {
-        imageBox[i].style.borderColor = 'white'
-        // render the word
-        renderWord(theWord)
-        }
         //change border color with new word generated. 
         //settimeout
     }
@@ -42,82 +37,75 @@ for (var i= 0; i < 12; i++) {
     var boxNum = i;
     console.log(i);
     document.getElementById(i).textContent = sweOne[i];
-};
-//var gameover variable = false. Game is over and not clickable when gameover is true. 
-// for (var i=0; i < 12; i++){
-//     var boxNum = i;
-//     document.getElementById(i).textContent = sweTwo[i];
-// };
-    // This renders the current word onto the page
-    function renderWord(word) {
-        wordBox.textContent = word;
+    };
 
-    }
+    // This renders the current word onto the page
+function renderWord(word) {
+    wordBox.textContent = word;
+}
     
     // This kicks the game off / resets the game
-    function startClick() {
-        var theWord = chooseAWord();
-        renderWord( theWord );
-        updateTimer(); 
-    }
+function startClick() {
+    var theWord = chooseAWord();
+    renderWord( theWord );
+    updateTimer(); 
+}
     // click image - click result will be correct or incorrect and proceed that way
-
-    function imageClick(e) {
-        console.log(e)
-        e.stopPropagation()
-        if (parseInt(e.target.id) !== randNum) { // note: I am using `!==`
-        console.log(false, e)
-        e.target.style.borderColor = "rgb(173, 47, 47)"; // incorrect!
-        } else {
-            console.log(true, e)
-        e.target.style.borderColor = "rgb(85, 165, 91)"; // hi-light correct answer!
-        //set timeout
-        scoreValue++; // update score
-        scoreEl.textContent = scoreValue; // update score in the DOM
-
-        var theWord = chooseAWord() // choose a new word
+//Function game over 
+function imageClick(e) {
+    console.log(e)
+    e.stopPropagation()
+    if (parseInt(e.target.id) !== randNum) { // note: I am using `!==`
+    console.log(false, e)
+    e.target.style.borderColor = "rgb(173, 47, 47)"; // incorrect!
+    } else {
+    console.log(true, e)
+    e.target.style.borderColor = "rgb(85, 165, 91)"; // hi-light correct answer!
+    //set timeout
+    scoreValue++; // update score
+    scoreEl.textContent = scoreValue; // update score in the DOM
+    var theWord = chooseAWord() // choose a new word
         // NEW BIT OF CODE - iterate through and reset borders!
         // we would probably want to add a setTimeout delay on this and include renderWord in it
         // but because the countdown doesn't stop when you are correct, that isn't really fair to
         // steal their time.
-    
-        }
     }
+}
     document.addEventListener("DOMContentLoaded", function(){
-        images = document.getElementsByClassName('textBox');
-        yourHiScore = document.getElementById('yourhiScore');
-        timer = document.getElementById('timer');
-        startBtn = document.getElementById('startBtn');
-        wordBox = document.getElementById('currentWord');
-        startBtn.addEventListener('click', startClick);
-        scoreEl = document.getElementById('score');
-        imageBox = document.getElementsByClassName('textBox');
-        document.getElementById('1')
-        console.log(document.getElementById('1'));
+    images = document.getElementsByClassName('textBox');
+    yourHiScore = document.getElementById('yourhiScore');
+    timer = document.getElementById('timer');
+    startBtn = document.getElementById('startBtn');
+    wordBox = document.getElementById('currentWord');
+    startBtn.addEventListener('click', startClick);
+    scoreEl = document.getElementById('score');
+    imageBox = document.getElementsByClassName('textBox');
+    document.getElementById('1')
+    console.log(document.getElementById('1'));
         
-        for (let i = 0; i < images.length; i++) {
-            images[i].addEventListener('click', imageClick);
+    for (let i = 0; i < images.length; i++) {
+        images[i].addEventListener('click', imageClick);
             
         }
     });
     //reset button: resets timer, randomize set of word options. 
-    function myFunction() {
-        location.reload();
-        chooseAWord ( theWord);
-    }
-    
+function myFunction() {
+    location.reload();
+    chooseAWord ( theWord);
+}
+
 function updateTimer() {
     var countdown = time;
     timer.textContent=countdown;
     count = setInterval(function() {
-        countdown--;
-        if (countdown >= 0) {
-            timer.textContent=countdown;
-        }
-        if (countdown == 0) {
-            timer.textContent = "Times Up!"
-            clearInterval(count);
-        }
+    countdown--;
+    if (countdown >= 0) {
+        timer.textContent=countdown;
+    }
+    if (countdown == 0) {
+        timer.textContent = "Times Up!"
+        clearInterval(count);
+    }
     }, 1000);
 }
 
@@ -132,10 +120,6 @@ function updateTimer() {
 
 
 //list of parameters that will just reset. 
-
-
-
-
 
 //init game: 
     //reveal one random card from eng1 arr 
