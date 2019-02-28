@@ -7,7 +7,7 @@ var engThree = ['to work','to visit','to walk','to shop','to dream','to swim','t
 var sweThree = ['arbeta','hälsa','gå','köpa','drömma','simma','bygga','tala','fråga','resa','springa','äta'];
 
 var imageClick;
-var imageBox;
+var textBox;
 var images;
 var time = 15;
 var randNum;
@@ -15,19 +15,18 @@ var yourHiScore;
 var wordBox;
 var startBtn;
 var scoreValue = 0;
-var highScoreValue = 0;
-var hiScoreEl = null; 
 var scoreEl = null;
-var level;
+var levelOne;
 var gameOver = false;
+var borderTimeout;
+var theWord;
 
 // This returns a random word from the engOne array
 function chooseAWord() {
-    // var engOne = ['boat','hat','friend','house','cat','sing','run','car','happy','sad','tired','read','book','table'];
+    //var engOne = ['boat','hat','friend','house','cat','sing','run','car','happy','sad','tired','read','book','table'];
     randNum = Math.floor(Math.random() * engOne.length);
-    console.log(randNum);
     return engOne[randNum];
-        //change border color with new word generated. 
+    //change border color with new word generated. 
         //settimeout
     }
 
@@ -35,96 +34,84 @@ document.getElementById('0').textContent = "bat"
 
 for (var i= 0; i < 12; i++) {
     var boxNum = i;
-    console.log(i);
+    //console.log(i);
     document.getElementById(i).textContent = sweOne[i];
     };
 
     // This renders the current word onto the page
 function renderWord(word) {
     wordBox.textContent = word;
+// console.log(renderWord);
 }
     
     // This kicks the game off / resets the game
 function startClick() {
-    var theWord = chooseAWord();
-    renderWord( theWord );
+    // console.log('CLICK')
+    gameOver = false;
     updateTimer(); 
+    var theWord = chooseAWord();
+    renderWord( theWord);
+    
 }
     // click image - click result will be correct or incorrect and proceed that way
 //Function game over 
-function imageClick(e) {
-    console.log(e)
-    e.stopPropagation()
-    if (parseInt(e.target.id) !== randNum) { // note: I am using `!==`
-    console.log(false, e)
-    e.target.style.borderColor = "rgb(173, 47, 47)"; // incorrect!
-    } else {
-    console.log(true, e)
-    e.target.style.borderColor = "rgb(85, 165, 91)"; // hi-light correct answer!
-    //set timeout
-    scoreValue++; // update score
-    scoreEl.textContent = scoreValue; // update score in the DOM
-    var theWord = chooseAWord() // choose a new word
-        // NEW BIT OF CODE - iterate through and reset borders!
-        // we would probably want to add a setTimeout delay on this and include renderWord in it
-        // but because the countdown doesn't stop when you are correct, that isn't really fair to
-        // steal their time.
+
+
+    function imageClick(e) {
+        e.stopPropagation()
+        //if gameover is false, then 
+        if(gameOver !== true) {
+            if (parseInt(e.target.id) !== randNum) { // note: I am using `!==`
+            //console.log(false, e)
+            e.target.style.borderColor = "rgb(173, 47, 47)"; // incorrect!
+            } else {
+            //console.log(true, e)
+            e.target.style.borderColor = "rgb(85, 165, 91)"; // hi-light correct answer!
+            scoreValue++; // update score
+            scoreEl.textContent = scoreValue; // update score in the DOM
+            var theWord = chooseAWord();
+            renderWord( theWord);
+            }
+        }
+
     }
-}
     document.addEventListener("DOMContentLoaded", function(){
     images = document.getElementsByClassName('textBox');
-    yourHiScore = document.getElementById('yourhiScore');
     timer = document.getElementById('timer');
     startBtn = document.getElementById('startBtn');
     wordBox = document.getElementById('currentWord');
-    startBtn.addEventListener('click', startClick);
+    startBtn.addEventListener('click', startClick, true);
     scoreEl = document.getElementById('score');
-    imageBox = document.getElementsByClassName('textBox');
+    textBox = document.getElementsByClassName('textBox');
     document.getElementById('1')
-    console.log(document.getElementById('1'));
-        
+    
+
     for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('click', imageClick);
-            
+        //console.log('hit');
         }
     });
-    //reset button: resets timer, randomize set of word options. 
-function myFunction() {
-    location.reload();
-    chooseAWord ( theWord);
-}
 
 function updateTimer() {
-    var countdown = time;
-    timer.textContent=countdown;
-    count = setInterval(function() {
+    var countdown = time;//time is 15
+    timer.textContent = countdown; //text to timer
+    count = setInterval(function() { //interval down by one sec
     countdown--;
+    
     if (countdown >= 0) {
-        timer.textContent=countdown;
+        timer.textContent = countdown;
     }
     if (countdown == 0) {
-        timer.textContent = "Times Up!"
-        clearInterval(count);
-    }
-    }, 1000);
-}
+        gameOver = true;
+        timer.textContent = "Times Up!" 
+    }   
+    }, 1000)
+};
 
-
-
-
-// function reset:
-//timer stop
-//timer reset to 0
 //borders to to white
-//gameover false
+//gameover 
 
 
-//list of parameters that will just reset. 
-
-//init game: 
-    //reveal one random card from eng1 arr 
-    //begin timer simutaneously. 
-//countdown for 10 sec
 //Endround functions: 
     //take index of randNUm.engOne[index] and compare to randNum.sweOne[index]
     //(able to click mulitple times, able to select incorrect)
@@ -134,9 +121,6 @@ function updateTimer() {
     //Loop another randNum from array until timer is at 0. Reset word button and reset timer to 0.
     //if points reach +7 pts move level forward. and repeat (more sec higher level?)
 
-//set countdown 
-//set random selected word from engOne arr
-//set logic of if index of arr1 === index of arr2 than ++ pt to scoreboard and green background
                 //else index of arr1 !=== index of arr2 than -- pt from scoreboard and red background
                 //continure refreshing new arr1 words and clicking on board until timer = 0
             
